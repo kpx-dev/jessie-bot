@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# build
+app_name=$1
+
+aws_region=us-east-1
+s3_bucket=knn-lambda-us-east-1
+bot_name=jessie_bot
+
+rm -rf dist
+mkdir -p dist/$bot_name
+
+cp -R $bot_name/__init__.py dist/$bot_name/
+cp -R $bot_name/helpers dist/$bot_name/
+cp -R $bot_name/$app_name dist/$bot_name/
+cp -R $bot_name/$app_name/$app_name.yml dist/
+
+if [ -f dist/$bot_name/$app_name/requirements.txt ]; then
+  pip install -r dist/$bot_name/$app_name/requirements.txt -t dist/
+fi
+
+aws cloudformation package --template-file dist/$app_name.yml --output-template-file dist/deploy.yml --s3-bucket $s3_bucket --s3-prefix $bot_name --region $aws_region
+
+# deploy
+stack_name="jessie-bot-${app_name//_/-}"
+aws cloudformation deploy --template-file dist/deploy.yml --stack-name $stack_name --region $aws_region --capabilities CAPABILITY_IAM

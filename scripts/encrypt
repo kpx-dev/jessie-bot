@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+text=$1
+keyid='alias/jessie_bot'
+region='us-east-1'
+
+aws kms encrypt --key-id $keyid --region $region --output text --query CiphertextBlob --plaintext $text

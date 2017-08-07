@@ -1,0 +1,32 @@
+{
+  "help_text": [
+    "Hi! My name is Hermes. I'm a smart bot. Was built on AWS Lex by smart engineers at TRD. Currently I can do the following for you:\n",
+
+    "`Adjust Driver Info` - change the driver name in the Leaderboard\n",
+
+    "`Countdown` - let you setup a countdown and alert you on a specific Slack channel\n",
+    "    `add countdown` - adds a new countdown into the countdown list",
+    "    `delete countdown` - deletes a countdown of your choice from the countdown list",
+    "    `process countdown` - sends alerts for the countdown",
+    "    `show countdown` - shows a list of the countdowns that are active\n",
+
+    "`Donut` - plans a Donut Day!:party_parrot:\n",
+    "    `add donut` - adds a Donut Day:party_parrot:",
+    "    `order donut` - places your donut order:epicwin:",
+    "    `show order` - shows a list of the donut orders:allthethings:",
+    "    `remind donut` - sends out reminder for Donut Day:fsjal:",
+    "    `show donut` - shows a list of all of the donut days and info in the databases:cereal:\n",
+
+    "`Healthcheck` - quickly check services status\n",
+
+    "`Github PR` - get Github pending Pull Requests\n",
+
+    "`Ice Cream` - are we getting ice cream?:icecream: Did we pole? Did we win?\n",
+
+    "`ReleaseNotes` - scan the git repos and see what got released recently\n",
+
+    "You can always make me smarter: https://github.com/trddev/hermes/\n",
+
+    "https://media.giphy.com/media/3o7TKrbXUnCJkzAWu4/giphy.gif"
+  ]
+}

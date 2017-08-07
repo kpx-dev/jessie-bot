@@ -1,0 +1,41 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Jessie Bot - networth Lambda
+
+Resources:
+  lambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: jessie-bot-networth
+      Handler: jessie_bot.networth.networth.handler
+      Runtime: python3.6
+      CodeUri: .
+      Description: Jessie Bot - networth Lambda
+      MemorySize: 128
+      Timeout: 15
+      Policies: AmazonDynamoDBFullAccess
+      KmsKeyArn: arn:aws:kms:us-east-1:781704289118:key/013b7874-1d4d-4043-a82c-3998f99f1755
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref Table
+          SLACK_OAUTH_TOKEN: zzz
+      Events:
+        PostResource:
+          Type: Api
+          Properties:
+            Path: /
+            Method: post
+        Timer:
+          Type: Schedule
+          Properties:
+            Schedule: rate(7 days)
+
+  Table:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      PrimaryKey:
+        Name: key
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

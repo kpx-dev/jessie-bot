@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: hermes help lambda
+
+Resources:
+  lambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: hermes-help
+      Handler: hermes.help.help.handler
+      Runtime: python3.6
+      CodeUri: .
+      Description: hermes help lambda
+      MemorySize: 128

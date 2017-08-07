@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+app_name=$1
+log_group=jessie-bot-$app_name
+
+awslogs get /aws/lambda/$log_group ALL --watch --aws-region=us-east-1
+
